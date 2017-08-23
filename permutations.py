@@ -2,7 +2,10 @@
 # Permutations algorithm
 #
 # Jirawat Yuktawathin
-# 23/8/2017
+# start  : 9/8/2017
+# finish : 23/8/2017
+#
+# Python version : 2.7
 
 import matplotlib.pyplot as plt
 from itertools import permutations
@@ -18,8 +21,8 @@ for i in range(point):
     x[1].append(randrange(0, 100))
     y[0].append(i + 1)
     y[1].append(randrange(0, 100))
-print(x)
-print(y)
+#print(x)
+#print(y)
 
 # Metrix of distances.
 d_metrix = [None] * (point**2)
@@ -34,7 +37,7 @@ while i < point:
         d_metrix[((i + 1) * (j + 1)) - 1] = distance
         j += 1
     i += 1
-print(d_metrix)
+#print(d_metrix)
 
 # All of ways.
 all_way = list(permutations(x[0]))
@@ -52,7 +55,7 @@ ax2 = fig.add_subplot(1, 2, 2)
 line2, = ax2.plot(x[1], y[1], 'b--')
 ax2.plot(x[1], y[1], 'bo')
 
-# Find the shortest way then update graph.
+# Find the shortest way and graph update.
 for i in range(len(all_way)):
     d_total = 0
     for j in range(len(all_way[i])):
@@ -82,5 +85,5 @@ for i in range(len(all_way)):
     time.sleep(0.0001)
 
 time.sleep(5)
-print(d_min)
-print(all_way[short])
+#print(d_min)
+#print(all_way[short])
