@@ -3,10 +3,14 @@
 # Nearest neighbour (NN) algorithm
 #
 # Jirawat Yuktawathin
-# 17/8/2017
+# start  : 9/8/2017
+# finish : 17/8/2017
+#
+# Python version : 2.7
 
 import matplotlib.pyplot as plt
 
+# Set x and y coordinate from file
 file = open("Berlin52")
 coord = []
 
@@ -18,6 +22,8 @@ file.close()
 
 x_coord = [coord[0][0]]
 y_coord = [coord[0][1]]
+#print(x_coord)
+#print(y_coord)
 
 def NN(coord):
     '''
