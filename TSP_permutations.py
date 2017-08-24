@@ -25,7 +25,7 @@ for i in range(point):
 #print(y)
 
 # Metrix of distances.
-d_metrix = [None] * (point**2)
+d_metrix = [None] * (point * (point - 1))
 i = 0
 j = 0
 while i < point:
