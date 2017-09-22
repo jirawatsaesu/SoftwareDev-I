@@ -3,7 +3,7 @@
 #
 # Jirawat Yuktawatin
 # start   : 23/8/2017
-# finish  : 1/9/2017
+# update  : 1/9/2017
 #
 # Python version : 3.6.1
 
@@ -19,7 +19,6 @@ for i in range(total_eqn):
         num = int(input('{}{}: '.format(ascii_lowercase[j], i + 1)))
         sub_eqn.append(num)
     eqn.append(sub_eqn)
-#print(eqn)
 
 for i in range(total_eqn):
 
@@ -28,7 +27,6 @@ for i in range(total_eqn):
         num = eqn[row][i]
         for column in range(i, total_eqn + 1):
             eqn[row][column] /= num
-    #print('division', eqn)
 
     # Minus.
     for row in range(total_eqn):
@@ -38,19 +36,15 @@ for i in range(total_eqn):
             else:
                 num = eqn[i][column]
                 eqn[row][column] -= num
-    #print('minus', eqn)
 
 # Minus.
 for i in range(total_eqn - 1):
     for j in range(i, total_eqn - i):
         num = eqn[i][i + j]
-        #print(num)
         for column in range(total_eqn + 1):
             if i + j == 0:
                 continue
             eqn[i][column] -= eqn[i + j][column] * num
-            #print(eqn)
-    #print(eqn)
 
 # Show out.
 for i in range(total_eqn):
