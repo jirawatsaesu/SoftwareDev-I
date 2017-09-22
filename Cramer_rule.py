@@ -5,7 +5,7 @@
 # start   : 23/8/2017
 # update  : 25/8/2017
 #
-# Python version : 3.6.1
+# Python version : 3.6
 
 from copy import deepcopy
 from string import ascii_lowercase, ascii_uppercase
