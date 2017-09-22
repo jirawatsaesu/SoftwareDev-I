@@ -3,7 +3,7 @@
 #
 # Jirawat Yuktawathin
 # start  : 9/8/2017
-# update : 22/9/2017
+# finish : 22/9/2017
 #
 # Python version : 3.6
 
