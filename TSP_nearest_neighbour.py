@@ -4,32 +4,30 @@
 #
 # Jirawat Yuktawathin
 # start  : 9/8/2017
-# finish : 17/8/2017
+# update : 17/8/2017
 #
 # Python version : 2.7
 
 import matplotlib.pyplot as plt
 
-# Set x and y coordinate from file
-file = open("Berlin52")
+files = open("Berlin52")
 coord = []
 
-for line in file:
+for line in files:
     x = float(line.split()[1])
     y = float(line.split()[2])
     coord.append([x, y])
-file.close()
+files.close()
 
 x_coord = [coord[0][0]]
 y_coord = [coord[0][1]]
-#print(x_coord)
-#print(y_coord)
+
 
 def NN(coord):
-    '''
+    """
     The nearest neighbour (NN) algorithm (a greedy algorithm) lets the salesman
     choose the nearest unvisited city as his next move.
-    '''
+    """
     all_distance = []
     if len(coord) == 1:
         return
@@ -59,7 +57,7 @@ for i in range(len(x_coord)):
     distance = (delta_x ** 2 + delta_y ** 2) ** 0.5
     total += distance
 
-plt.plot(x_coord + [x_coord[0]], y_coord + [y_coord[0]], '.', color = 'brown')
-plt.plot(x_coord + [x_coord[0]], y_coord + [y_coord[0]], '--', color = 'orange')
+plt.plot(x_coord + [x_coord[0]], y_coord + [y_coord[0]], '.', color='brown')
+plt.plot(x_coord + [x_coord[0]], y_coord + [y_coord[0]], '--', color='orange')
 plt.title('Distance = {:.3f}'.format(total))
 plt.show()
