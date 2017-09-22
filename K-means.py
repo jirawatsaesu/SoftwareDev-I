@@ -29,7 +29,7 @@ def k_means(data, k=2, centroid=None, cluster=None):
             x = [x for [x, y] in data]
             y = [y for [x, y] in data]
             plt.plot(x, y, 'mo', markersize=4)
-        plt.pause(3)
+        plt.pause(1)
         for i in range(k):
             x = [x for [x, y] in centroid]
             y = [y for [x, y] in centroid]
