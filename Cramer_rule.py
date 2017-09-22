@@ -3,7 +3,7 @@
 #
 # Jirawat Yuktawatin
 # start   : 23/8/2017
-# finish  : 25/8/2017
+# update  : 25/8/2017
 #
 # Python version : 3.6.1
 
@@ -21,14 +21,12 @@ for i in range(total_eqn):
         num = int(input('{}{}: '.format(ascii_lowercase[j], i + 1)))
         sub_eqn.append(num)
     eqn.append(sub_eqn)
-#print(eqn)
 
 # Calculate a determinant of initial metrix.
 init_eqn = []
 for i in range(total_eqn):
     init_eqn.append(eqn[i][:-1])
 normal_eqn = det(init_eqn)
-#print(init_eqn)
 
 # Calculate a determinant of adaptive metrix.
 for i in range(total_eqn):
