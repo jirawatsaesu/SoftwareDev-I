@@ -11,21 +11,28 @@ from copy import deepcopy
 
 
 def k_means(data, k=2, centroid=None, cluster=None):
-    # 1st round, Random a centroid.
-    # 2nd rounds or more, Change a centroid.
+    # data = [x, y, z, *arg]
+    # k = Number of clusters.
+    
+    # 1st round, Random a centroids.
+    # 2nd rounds or more, Change a centroids.
     if not bool(centroid):
+        # Range of centroidss
         cluster = [[] for i in range(k)]
         min_x = min(x for [x, y, z, *arg] in data)
-        max_x = max(x for [x, y, z, *arg] in data) + 1
+        max_x = max(x for [x, y, z, *arg] in data)
         min_y = min(y for [x, y, z, *arg] in data)
-        max_y = max(y for [x, y, z, *arg] in data) + 1
+        max_y = max(y for [x, y, z, *arg] in data)
         min_z = min(z for [x, y, z, *arg] in data)
-        max_z = max(z for [x, y, z, *arg] in data) + 1
+        max_z = max(z for [x, y, z, *arg] in data)
+        
+        # Create centroidss
         centroid = []
         for i in range(k):
             centroid.append([(min_x + max_x) / 2, (min_y + max_y) / 2,\
                              (min_z + max_z) / 2])
     else:
+        # Calculate new means and new centroids.
         old_centroid = deepcopy(centroid)
         for i in range(k):
             try:
@@ -36,7 +43,7 @@ def k_means(data, k=2, centroid=None, cluster=None):
             except ZeroDivisionError:
                 pass
 
-        # Check centroid
+        # Check centroids.
         if old_centroid == centroid:
             return centroid, cluster
         else:
@@ -44,7 +51,7 @@ def k_means(data, k=2, centroid=None, cluster=None):
                 for j in range(len(cluster[i])):
                     data.append(cluster[i].pop())
 
-    # Change group
+    # Change groups.
     for i in range(len(data)):
         for j in range(k):
             delta_x = centroid[j][0] - data[i][0]
@@ -63,6 +70,10 @@ def k_means(data, k=2, centroid=None, cluster=None):
 
 
 def mod_img(pic, color, mod_pic):
+    # pic = Image name to modify (at the same folder of project).
+    # color = Number of colors.
+    # mod_pic = Name of modified image.
+    
     # Image read.
     print('Image read...')
     img = Image.open(pic)
@@ -73,17 +84,19 @@ def mod_img(pic, color, mod_pic):
         for px_y in range(y_max):
             rgb.append(px[px_x, px_y] + (px_x, px_y))
 
-    # K-means clustering
+    # K-means clustering.
     print('clustering...')
     centroid, cluster = k_means(rgb, color)
 
-    # Change color.
+    # Change colors.
     print('Save a new file...')
     for i in range(len(centroid)):
         for j in range(len(cluster[i])):
             px[cluster[i][j][-2], cluster[i][j][-1]] =\
                 (int(centroid[i][0]), int(centroid[i][1]), int(centroid[i][2]))
+    
+    # Save image.
     img.save(mod_pic)
     return 'Complete!'
 
-mod_img('pic.jpg', 8, 'modified_8.jpg')
+mod_img('pic.jpg', 2, 'modified_8.jpg')
